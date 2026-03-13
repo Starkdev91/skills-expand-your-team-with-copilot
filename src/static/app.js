@@ -519,6 +519,50 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
+    // Create social share buttons
+    const pageUrl = window.location.href.split("#")[0] + "#" + encodeURIComponent(name);
+    const shareUrl = encodeURIComponent(pageUrl);
+    const shareText = encodeURIComponent(
+      `Check out ${name} at Mergington High School! Schedule: ${formattedSchedule}`
+    );
+    const emailSubject = encodeURIComponent(
+      `Check out ${name} at Mergington High School`
+    );
+    const shortDescription =
+      details.description.length > 200
+        ? details.description.slice(0, 197) + "..."
+        : details.description;
+    const emailBody = encodeURIComponent(
+      `I thought you might be interested in this activity:\n\n${name}\n${shortDescription}\n\nSchedule: ${formattedSchedule}\n\nLearn more: ${pageUrl}`
+    );
+    const shareButtonsHtml = `
+      <div class="share-buttons">
+        <span class="share-label">Share:</span>
+        <a href="https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}"
+           class="share-button share-twitter"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Share on X (Twitter)"
+           title="Share on X (Twitter)">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}"
+           class="share-button share-facebook"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Share on Facebook"
+           title="Share on Facebook">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="mailto:?subject=${emailSubject}&body=${emailBody}"
+           class="share-button share-email"
+           aria-label="Share via Email"
+           title="Share via Email">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+    `;
+
     activityCard.innerHTML = `
       ${tagHtml}
       <h4>${name}</h4>
@@ -569,6 +613,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `
         }
       </div>
+      ${shareButtonsHtml}
     `;
 
     // Add click handlers for delete buttons

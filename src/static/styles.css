@@ -476,6 +476,71 @@ footer {
   font-size: 0.8rem;
 }
 
+/* Social sharing buttons */
+.share-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 8px;
+  margin-top: 8px;
+  border-top: 1px solid var(--border-light);
+}
+
+.share-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-right: 2px;
+}
+
+.share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.share-twitter {
+  background-color: #000;
+  color: #fff;
+}
+
+.share-twitter:hover {
+  background-color: #333;
+  transform: scale(1.1);
+}
+
+.share-facebook {
+  background-color: #1877f2;
+  color: #fff;
+}
+
+.share-facebook:hover {
+  background-color: #0d65d8;
+  transform: scale(1.1);
+}
+
+.share-email {
+  background-color: var(--primary);
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+.share-email:hover {
+  background-color: var(--primary-light);
+  transform: scale(1.1);
+}
+
 /* Search and Filter Components - Updated for Sidebar */
 .search-box {
   display: flex;
